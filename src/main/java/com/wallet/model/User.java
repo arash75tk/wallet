@@ -1,26 +1,33 @@
 package com.wallet.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long USerID;
+    @Pattern( regexp ="^09[0-9]{9}$")
     private String PhoneNumber;
     private String Name;
     private String FamilyName;
     private String BirthDate;
     private Gender gender;
     private MilitaryState militarystate;
+    @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-] + \\.[a-zA-Z]{2,}$")
     private String EmailAddress;
-    private String NationalNumber;
+    @Pattern(regexp = "^\\d{10}$")
+    private Long NationalNumber;
 
-    public String getNationalNumber() {
+    public Long getNationalNumber() {
         return NationalNumber;
     }
 
-    public void setNationalNumber(String nationalNumber) {
+    public void setNationalNumber(Long nationalNumber) {
         NationalNumber = nationalNumber;
     }
 

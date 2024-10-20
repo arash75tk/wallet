@@ -1,13 +1,18 @@
 package com.wallet.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
 
 @Entity
 public class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long AccountId;
     private String AccountNumber;
+    @Min(10000) //min balance is 10000 rial
     private double Balance;
     private String AccountCreateDate;
     private String ShebaNumber;
