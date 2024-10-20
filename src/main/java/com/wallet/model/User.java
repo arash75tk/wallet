@@ -1,9 +1,6 @@
 package com.wallet.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
@@ -12,25 +9,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long USerID;
     @Pattern( regexp ="^09[0-9]{9}$")
+    @Column(nullable = false)
     private String PhoneNumber;
+    @Column(nullable = false)
     private String Name;
+    @Column(nullable = false)
     private String FamilyName;
+    @Column(nullable = false)
     private String BirthDate;
+    @Column(nullable = false)
     private Gender gender;
+    @Column(nullable = false)
     private MilitaryState militarystate;
     @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-] + \\.[a-zA-Z]{2,}$")
+    @Column(nullable = true)
     private String EmailAddress;
     @Pattern(regexp = "^\\d{10}$")
-    private Long NationalNumber;
+    @Column(nullable = false, unique=true)
+    private String NationalNumber;
 
-    public Long getNationalNumber() {
+    public String getNationalNumber() {
         return NationalNumber;
     }
 
-    public void setNationalNumber(Long nationalNumber) {
+    public void setNationalNumber(String nationalNumber) {
         NationalNumber = nationalNumber;
     }
-
 
     public String getPhoneNumber() {
         return PhoneNumber;

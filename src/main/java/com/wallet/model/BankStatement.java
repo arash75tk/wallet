@@ -1,4 +1,6 @@
 package com.wallet.model;
+import jakarta.persistence.PrePersist;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +20,7 @@ public class BankStatement {
         return statementId;
     }
 
+    @PrePersist
     public void setStatementId() {
         this.statementId = CreateRandom_Id_10_Digits();
     }
