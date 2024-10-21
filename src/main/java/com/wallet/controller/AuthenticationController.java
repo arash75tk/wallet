@@ -3,6 +3,7 @@ package com.wallet.controller;
 import com.wallet.model.LoginResponse;
 import com.wallet.model.User;
 import com.wallet.model.UserLogin;
+import com.wallet.model.userConvert;
 import com.wallet.service.AuthenticationService;
 import com.wallet.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AuthenticationController {
     private  AuthenticationService authenticationService;
 
     @PostMapping("/registeruser")
-    public ResponseEntity<User> register(@RequestBody User input) {
+    public ResponseEntity<User> register(@RequestBody userConvert input) {
         User registeredUser = authenticationService.signup(input);
 
         return ResponseEntity.ok(registeredUser);

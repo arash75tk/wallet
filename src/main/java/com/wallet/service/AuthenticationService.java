@@ -3,6 +3,7 @@ package com.wallet.service;
 
 import com.wallet.model.User;
 import com.wallet.model.UserLogin;
+import com.wallet.model.userConvert;
 import com.wallet.repository.UserRepo;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,14 +29,8 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(User input) {
-        User user = new User();
-        user.setPhoneNumber(input.getPhoneNumber());
-        user.setEmailAddress(input.getEmailAddress());
-        user.setBirthDate(input.getBirthDate());
-        user.setGender(input.getGender());
-        user.setMilitaryState(input.getMilitaryState());
-        user.setPassword(input.getPassword());
+    public User signup(userConvert input) {
+        User user = input.convertToEntity(input);
         return userRepository.save(user);
     }
 

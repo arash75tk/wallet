@@ -17,25 +17,26 @@ public class User  implements UserDetails {
     @Pattern( regexp ="^09[0-9]{9}$")
     @Column(nullable = false)
     private String phoneNumber;
-    @Column(nullable = true)
-    private String name;
-    @Column(nullable = true)
-    private String familyName;
     @Column(nullable = false)
     private String birthDate;
     @Column(nullable = false)
     private Gender gender;
     @Column(nullable = false)
     private MilitaryState militaryState;
-    @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-] + \\.[a-zA-Z]{2,}$")
-    @Column(nullable = true)
+    @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+    @Column(nullable = false)
     private String emailAddress;
     @Pattern(regexp = "^\\d{10}$")
     @Column(nullable = false, unique=true)
     private String nationalNumber;
-
     @Column(nullable = false)
     private String password;
+    @Column(nullable = true)
+    private String name;
+    @Column(nullable = true)
+    private String familyName;
+
+
 
     public String getPassword() {
         return password;

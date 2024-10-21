@@ -17,12 +17,12 @@ public class Transaction {
     @Min(10000)
     @Column(name = "amount", nullable = false)
     private Long txAmount;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AccountAction action;
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp txTimeStamp;
-
 
     @ManyToOne
     @JoinColumn(name = "walletAddress", referencedColumnName = "walletAddress", nullable = true)
@@ -32,7 +32,21 @@ public class Transaction {
     @JoinColumn(name = "accountNumber", referencedColumnName = "accountNumber", nullable = true)
     private Account account;
 
+    public Account getAccount() {
+        return account;
+    }
 
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
 
     public Long getTx_amount() {
         return txAmount;
