@@ -14,16 +14,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class SecurityConfig {
-
-    private final UserRepo userRepository;
-
-    public SecurityConfig(UserRepo userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private  UserRepo userRepository;
 
     @Bean
     UserDetailsService userDetailsService() {
-        return userRepository::findByEmail;
+        return userRepository::findByEmailAddress;
     }
 
     @Bean
