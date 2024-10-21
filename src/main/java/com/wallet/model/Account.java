@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Account {
     @Id
@@ -24,6 +27,9 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "nationalCode", referencedColumnName = "NationalNumber")
     private User user;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Transaction> TXs = new ArrayList<>();
 
     public Long getAccountId() {
         return AccountId;

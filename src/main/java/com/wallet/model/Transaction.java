@@ -23,6 +23,16 @@ public class Transaction {
     Time TX_TimeStamp;
 
 
+    @ManyToOne
+    @JoinColumn(name = "walletaddress", referencedColumnName = "WalletAddress", nullable = true)
+    private wallet wlt;
+
+    @ManyToOne
+    @JoinColumn(name = "accountNumber", referencedColumnName = "AccountNumber", nullable = true)
+    private Account account;
+
+
+
     public Long getTx_amount() {
         return Tx_amount;
     }
