@@ -7,18 +7,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class wallet {
+public class Wallet{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Pattern(regexp = "^.{10}$")
     @Column(unique=true,nullable=false)
-    private String WalletAddress;
+    private String walletAddress;
     @Column(nullable=false)
-    double Balance;
+    double balance;
 
-    @OneToMany(mappedBy = "wlt", cascade = CascadeType.ALL)
-    private List<Transaction> TXs = new ArrayList<>();
+    @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL)
+    private List<Transaction> txs = new ArrayList<>();
+
+    public List<Transaction> getTxs() {
+        return txs;
+    }
+
+    public void setTxs(List<Transaction> txs) {
+        this.txs = txs;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public @Pattern(regexp = "^.{10}$") String getWalletAddress() {
+        return walletAddress;
+    }
+
+    public void setWalletAddress(@Pattern(regexp = "^.{10}$") String walletAddress) {
+        this.walletAddress = walletAddress;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 
 
 }

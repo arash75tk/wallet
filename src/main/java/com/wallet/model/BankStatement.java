@@ -13,7 +13,7 @@ public class BankStatement {
     private Date startDate;
     private Date endDate;
     private Date generationDate;
-    private double CurrentBalance;
+    private double currentBalance;
     private List<Transaction> transactions;
 
     public Long getStatementId() {
@@ -58,11 +58,11 @@ public class BankStatement {
     }
 
     public double getCurrentBalance() {
-        return CurrentBalance;
+        return currentBalance;
     }
 
     public void setCurrentBalance(double CurrentBalance) {
-        this.CurrentBalance = CurrentBalance;
+        this.currentBalance = CurrentBalance;
     }
 
 

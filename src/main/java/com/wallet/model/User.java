@@ -7,48 +7,48 @@ import jakarta.validation.constraints.Pattern;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long USerID;
+    private Long userID;
     @Pattern( regexp ="^09[0-9]{9}$")
     @Column(nullable = false)
-    private String PhoneNumber;
+    private String phoneNumber;
     @Column(nullable = false)
-    private String Name;
+    private String name;
     @Column(nullable = false)
-    private String FamilyName;
+    private String familyName;
     @Column(nullable = false)
-    private String BirthDate;
+    private String birthDate;
     @Column(nullable = false)
     private Gender gender;
     @Column(nullable = false)
-    private MilitaryState militarystate;
+    private MilitaryState militaryState;
     @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-] + \\.[a-zA-Z]{2,}$")
     @Column(nullable = true)
-    private String EmailAddress;
+    private String emailAddress;
     @Pattern(regexp = "^\\d{10}$")
     @Column(nullable = false, unique=true)
-    private String NationalNumber;
+    private String nationalNumber;
 
     public String getNationalNumber() {
-        return NationalNumber;
+        return nationalNumber;
     }
 
     public void setNationalNumber(String nationalNumber) {
-        NationalNumber = nationalNumber;
+        this.nationalNumber = nationalNumber;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
     public String getFamilyName() {
-        return FamilyName;
+        return familyName;
     }
 
     public void setFamilyName(String familyName) {
-        FamilyName = familyName;
+        this.familyName = familyName;
     }
 
     public Gender getGender() {
@@ -60,46 +60,57 @@ public class User {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getBirthDate() {
-        return BirthDate;
+        return birthDate;
     }
 
     public void setBirthDate(String birthDate) {
-        BirthDate = birthDate;
+        this.birthDate = birthDate;
     }
 
     public Long getUSerID() {
-        return USerID;
+        return userID;
     }
 
     public void setUSerID(Long USerID) {
-        this.USerID = USerID;
+        this.userID = USerID;
     }
 
     public MilitaryState getMilitarystate() {
-        return militarystate;
+        return militaryState;
     }
 
     public void setMilitarystate(MilitaryState militarystate) {
-        this.militarystate = militarystate;
+        this.militaryState = militarystate;
     }
 
     public String getEmailAddress() {
-        return EmailAddress;
+        return emailAddress;
     }
 
     public void setEmailAddress(String emailAddress) {
-        EmailAddress = emailAddress;
+        this.emailAddress = emailAddress;
     }
 
     public User() {}
+
+    public void UpdateUserFeilds(User user){
+        this.phoneNumber = user.phoneNumber;
+        this.name = user.name;
+        this.familyName = user.familyName;
+        this.birthDate = user.birthDate;
+        this.gender = user.gender;
+        this.militaryState = user.militaryState;
+        this.emailAddress = user.emailAddress;
+        this.nationalNumber = user.nationalNumber;
+    }
 
 
 }

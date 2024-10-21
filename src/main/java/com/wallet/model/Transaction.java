@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Random;
 
 @Entity
@@ -10,36 +11,36 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
     @Column(name = "TxNumber",nullable = false,unique = true)
-    String Tx_number;
+    private String txNumber;
     @Min(10000)
     @Column(name = "amount", nullable = false)
-    Long Tx_amount;
+    private Long txAmount;
     @Column(nullable = false)
-    AccountAction action;
+    private AccountAction action;
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    Time TX_TimeStamp;
+    private Timestamp txTimeStamp;
 
 
     @ManyToOne
-    @JoinColumn(name = "walletaddress", referencedColumnName = "WalletAddress", nullable = true)
-    private wallet wlt;
+    @JoinColumn(name = "walletAddress", referencedColumnName = "walletAddress", nullable = true)
+    private Wallet wallet;
 
     @ManyToOne
-    @JoinColumn(name = "accountNumber", referencedColumnName = "AccountNumber", nullable = true)
+    @JoinColumn(name = "accountNumber", referencedColumnName = "accountNumber", nullable = true)
     private Account account;
 
 
 
     public Long getTx_amount() {
-        return Tx_amount;
+        return txAmount;
     }
 
     @PrePersist
     public void setTx_amount() {
-        Tx_amount = CreateRandom_Id_8_Digits();
+        txAmount = CreateRandom_Id_8_Digits();
     }
 
     public AccountAction getAction() {
@@ -60,20 +61,20 @@ public class Transaction {
     }
 
     public String getTx_number() {
-        return Tx_number;
+        return txNumber;
     }
 
     public void setTx_number(String tx_number) {
-        Tx_number = tx_number;
+        txNumber = tx_number;
     }
 
 
-    public Time getTX_TimeStamp() {
-        return TX_TimeStamp;
+    public Timestamp getTX_TimeStamp() {
+        return txTimeStamp;
     }
 
-    public void setTX_TimeStamp(Time TX_TimeStamp) {
-        this.TX_TimeStamp = TX_TimeStamp;
+    public void setTX_TimeStamp(Timestamp TX_TimeStamp) {
+        this.txTimeStamp = TX_TimeStamp;
     }
 
     private long CreateRandom_Id_8_Digits() {
