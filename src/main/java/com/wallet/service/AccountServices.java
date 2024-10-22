@@ -44,10 +44,11 @@ public class AccountServices {
         }
     }
 
-    public void deleteAccount(String accountNumber ) {
+    public String deleteAccount(String accountNumber ) {
         try {
             Account account = accountRepo.findByAccountNumber(accountNumber);
             accountRepo.delete(account);
+            return "deleted account " + accountNumber;
         } catch (EntityNotFoundException e) {
             throw new CustomExceptionHandler("Account with accountNumber " + accountNumber + " not found for deletion.", e);
         } catch (Exception e) {

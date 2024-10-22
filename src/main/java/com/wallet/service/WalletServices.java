@@ -33,10 +33,11 @@ public class WalletServices {
         }
     }
 
-    public void deleteWallet(String addrress ) {
+    public String deleteWallet(String addrress ) {
         try {
             Wallet mywallet = walletrepo.findByWalletAddress(addrress);
             walletrepo.delete(mywallet);
+            return "delete wallet with address :"+addrress;
         } catch (EntityNotFoundException e) {
             throw new CustomExceptionHandler("Account with addrress " + addrress + " not found for deletion.", e);
         } catch (Exception e) {
