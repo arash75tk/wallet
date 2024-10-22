@@ -17,7 +17,6 @@ public class Transaction {
     @Min(10000)
     @Column(name = "amount", nullable = false)
     private Long txAmount;
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AccountAction action;
     @Column(nullable = false)

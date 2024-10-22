@@ -30,11 +30,11 @@ public class transactionConvert {
         this.txTimeStamp = txTimeStamp;
     }
 
-    public String getAction() {
+    public int getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(int action) {
         this.action = action;
     }
 
@@ -56,7 +56,7 @@ public class transactionConvert {
 
     private String txNumber;
     private Long txAmount;
-    private String action; // Use String for the enum name
+    private int action; // Use String for the enum name
     private Timestamp txTimeStamp;
     private String walletAddress;
     private String accountNumber;
@@ -64,7 +64,7 @@ public class transactionConvert {
     public Transaction convertToEntity(transactionConvert txconvert, WalletRepo walletRepository, AccountRepo accountRepository) {
         Transaction transaction = new Transaction();
         transaction.setTx_number(txconvert.getTxNumber());
-        transaction.setAction(AccountAction.valueOf(txconvert.getAction())); // Convert String to enum
+        transaction.setAction(AccountAction.values()[txconvert.getAction()]); // Convert String to enum
         transaction.setTX_TimeStamp(txconvert.getTxTimeStamp());
         if(txconvert.getWalletAddress()!=null) {
             Wallet wallet = walletRepository.findByWalletAddress(txconvert.getWalletAddress());
