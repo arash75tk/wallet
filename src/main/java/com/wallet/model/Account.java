@@ -7,7 +7,10 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Date;
+import org.hibernate.annotations.CreationTimestamp;
+
+
 
 @Entity
 public class Account {
@@ -20,8 +23,9 @@ public class Account {
     @Min(10000) //min balance is 10000 rial
     @Column(nullable = false)
     private double balance;
-    @Column(nullable = false)
-    private String accountCreateDate;
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Date accountCreateDate;
     @Pattern(regexp = "^IR\\d{24}$")
     @Column(nullable = false, unique=true)
     private String shebaNumber;
@@ -57,11 +61,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getAccountCreateDate() {
+    public Date getAccountCreateDate() {
         return accountCreateDate;
     }
 
-    public void setAccountCreateDate(String accountCreateDate) {
+    public void setAccountCreateDate(Date accountCreateDate) {
         this.accountCreateDate = accountCreateDate;
     }
 
@@ -86,5 +90,6 @@ public class Account {
     public void create_Seba_AccountNumber(){
         accountNumber = RandomStringGen.generateNumericRandomString(14);
         shebaNumber = "IR"+ RandomStringGen.generateNumericRandomString(24);
+
     }
 }

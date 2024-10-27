@@ -31,6 +31,7 @@ public class AuthenticationService {
 
     public User signup(userConvert input) {
         User user = input.convertToEntity(input);
+        user.setPassword(passwordEncoder.encode(input.getPassword()));
         return userRepository.save(user);
     }
 

@@ -19,7 +19,7 @@ public class SecurityConfig {
 
     @Bean
     UserDetailsService userDetailsService() {
-        return userRepository::findByEmailAddress;
+        return username -> userRepository.findByEmailAddress(username);
     }
 
     @Bean

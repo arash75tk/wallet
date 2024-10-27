@@ -39,8 +39,7 @@ public class SecurityConfiguration {
                         AbstractHttpConfigurer::disable
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/authenticate").permitAll()
-                        .requestMatchers("/registeruser").permitAll()
+                        .requestMatchers("auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(

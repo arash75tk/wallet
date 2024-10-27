@@ -24,7 +24,7 @@ public class User  implements UserDetails {
     @Column(nullable = false)
     private MilitaryState militaryState;
     @Pattern( regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String emailAddress;
     @Pattern(regexp = "^\\d{10}$")
     @Column(nullable = false, unique=true)
